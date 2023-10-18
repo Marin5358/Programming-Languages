@@ -14,4 +14,11 @@ public class exercise1 {
 		num2=10*i;
 	}
 
+	public static void main(String[] args){
+		myNumber A = new myNumber();
+		System.out.println(A.getNum());
+		A.setNum(10);
+		System.out.println(A.getNum());
+		System.out.println(A.num2);
+
 }
