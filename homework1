@@ -1,0 +1,35 @@
+package homework;
+
+import java.util.Scanner;
+
+public class Marin {
+	
+		public static void main(String[] arg) {
+			
+			Scanner input = new Scanner(System.in);
+			System.out.println("Enter the employee's name: ");
+			String name = input.nextLine();
+			System.out.println("Enter the gross salary: ");
+			double GrossSalary = input.nextDouble();
+			double stateTax = GrossSalary * 0.284;
+			if (GrossSalary * 0.284 < 0){
+			
+			}
+			else {
+				double personalTax= GrossSalary - stateTax - 7000;
+			}
+			double personalTax= 0.10 * (GrossSalary - stateTax - 7000);
+			double netSalary = GrossSalary - stateTax - personalTax;
+			
+			stateTax = Math.round(stateTax);
+			personalTax = Math.round(personalTax);
+			netSalary = Math.round(netSalary);
+			
+
+	        System.out.println("State Taxes: " + stateTax);
+	        System.out.println("Personal Tax: " + personalTax);
+	        System.out.println("Net Salary: " + netSalary);
+			
+		}
+
+		}
