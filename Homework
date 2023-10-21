@@ -1,0 +1,44 @@
+package homework;
+
+import java.util.Scanner;
+
+public class Marin {
+	
+		public static void main(String[] arg) {
+			
+			String inputName = "Marin Vasilevski";
+			char firstLetter=inputName.charAt(0);
+			int firstLetterPosition = 0;
+			char lastLetter=inputName.charAt(inputName.length()-1);
+			int lastLetterPosition=inputName.length()-1;
+			
+			char middleCharacter;
+			int middleCharacterPosition;
+			int length = inputName.length();
+			if(length%2==1) {
+				middleCharacterPosition=length/2;
+				middleCharacter = inputName.charAt(middleCharacterPosition);
+			}
+			else {
+				middleCharacterPosition = length / 2 - 1;
+				middleCharacter = inputName.charAt(middleCharacterPosition);
+			}
+			
+			int sum = firstLetter + lastLetter + middleCharacter;
+			
+			char maxChar = firstLetter;
+		      if (lastLetter > maxChar) {
+		            maxChar = lastLetter;
+		        }
+		        if (middleCharacter > maxChar) {
+		            maxChar = middleCharacter;
+		        }
+		        System.out.println("First Character: " + firstLetter + " (Position: " + firstLetterPosition + ")");
+		        System.out.println("Last Character: " + lastLetter + " (Position: " + lastLetterPosition + ")");
+		        System.out.println("Middle Character: " + middleCharacter + " (Position: " + middleCharacterPosition + ")");
+		        System.out.println("Sum of Characters: " + sum);
+		        System.out.println("Character with the Biggest Value: " + maxChar);
+			
+		}
+
+		}
