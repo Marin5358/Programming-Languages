@@ -1,0 +1,23 @@
+package homework;
+
+import java.util.Random;
+
+public class Marin {
+	
+		public static void main(String[] arg) {
+			double randomDecimal = generateRandomDecimal();
+			int integerpart = (int) randomDecimal;
+			double decimalpart= randomDecimal - integerpart;
+			char charFromCode = (char) integerpart;
+			
+			System.out.println("Random Decimal Number = " +randomDecimal);
+			System.out.println("Integer part = " +integerpart );
+			System.out.println("Decimal Part = " +decimalpart);
+			System.out.println("Character from Code: "+ integerpart + " is:" + charFromCode);
+			
+		}
+		    private static double generateRandomDecimal() {
+		        Random rand = new Random();
+		        return rand.nextDouble() * 100;
+		    }
+		}
