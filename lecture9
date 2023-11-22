@@ -1,0 +1,28 @@
+package lecture9;
+
+import java.lang.reflect.Modifier;
+
+import ex.Dog;
+
+class Animal{
+	
+}
+public class Main {
+
+	public static void main(String[] args) {
+		try {
+			Dog d1 = new Dog();
+			Class obj = d1.getClass();
+			String name = obj.getName();
+			System.out.println("Name:"  + name);
+			int modifier = obj.getModifiers();
+			String mod = Modifier.toString(modifier);
+			System.out.println("modifier:"+mod);
+			Class superClass = obj.getSuperclass();
+			System.out.println("superclass:"+superClass.getName());
+			}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+
+	}
