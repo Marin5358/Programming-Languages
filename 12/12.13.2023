@@ -1,0 +1,18 @@
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+InputStreamReader isr = new InputStreamReader(System.in) ;
+BufferedReader input = new BufferedReader (isr);
+String name =
+int year = 0;
+System.out.printIn("Input something:
+try {
+System.out .println("Input name: "
+name = input.readline);
+System.out.printIn("Input year: ");
+year = Integer.parseInt (input.readLine ()) ;
+} catch (Exception e) {
+System.out.printin("An exception
+has
+System.out.printIn("Your name:
+System.out.printin("Your year:
+occurred");
