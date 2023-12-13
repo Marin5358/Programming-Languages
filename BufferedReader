@@ -1,0 +1,19 @@
+import java.io.BufferedReader;
+
+class input2{
+	public static void main(String[]args) {
+		inputStreamReader isr = new
+		inputStreamReader(System.in);
+		BufferedReader input = new
+		BufferedReader(isr);
+		String text = "";
+		System.out.println("input something");
+		try {
+			text=input.readLine();
+		}catch(Exception e) {
+			System.out.println("An exception has occurred");
+			
+		}
+		System.out.println("You have input"+text);
+	}
+}
