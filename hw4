@@ -1,0 +1,100 @@
+package ass1;
+
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class hw {
+    static class Book {
+        String title;
+        String author;
+        double price;
+        int quantity;
+
+        public Book(String title, String author, double price, int quantity) {
+            this.title = title;
+            this.author = author;
+            this.price = price;
+            this.quantity = quantity;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setAuthor(String author) {
+            this.author = author;
+        }
+
+        public String getAuthor() {
+            return author;
+        }
+
+        public void setPrice(double price) {
+            this.price = price;
+        }
+
+        public double getPrice() {
+            return price;
+        }
+
+        public void setQuantity(int quantity) {
+            this.quantity = quantity;
+        }
+
+        public int getQuantity() {
+            return quantity;
+        }
+
+        public void printAttributes() {
+            System.out.println("Title: " + title);
+            System.out.println("Author: " + author);
+            System.out.println("Price: " + price);
+            System.out.println("Quantity: " + quantity);
+            System.out.println();
+        }
+    }
+
+    public static class Demo {
+        public static void main(String[] args) {
+            List<String> titles = Arrays.asList("Book1", "Book2", "Book3", "Book4", "Book5");
+            List<Book> books = titles.stream()
+                    .map(title -> new Book(title, title, Math.random() * 50 + 10, (int) (Math.random() * 1500) + 500))
+                    .collect(Collectors.toList());
+
+            try {
+                System.out.println("Books sorted by title:");
+                books.stream()
+                        .sorted(Comparator.comparing(Book::getTitle))
+                        .forEach(Book::printAttributes);
+
+                books.stream()
+                        .max(Comparator.comparing(Book::getPrice))
+                        .ifPresent(mostExpensiveBook -> {
+                            System.out.println("Most Expensive Book:");
+                            mostExpensiveBook.printAttributes();
+                        });
+
+                books.stream()
+                        .min(Comparator.comparing(Book::getPrice))
+                        .ifPresent(cheapestBook -> {
+                            System.out.println("Cheapest Book:");
+                            cheapestBook.printAttributes();
+                        });
+
+                boolean hasBookWithQuantityOver1000 = books.stream()
+                        .anyMatch(book -> book.getQuantity() > 1000);
+
+                System.out.println("At least one book with quantity over 1000 in stock: " + hasBookWithQuantityOver1000);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
