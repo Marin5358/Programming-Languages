@@ -1,0 +1,45 @@
+package ex;
+import java.util.Scanner;
+public class ex {
+	    public static void main(String[] args) {
+	        Scanner scanner = new Scanner(System.in);
+
+	        System.out.print("Number of rows: ");
+	        int rows = scanner.nextInt();
+	        System.out.print("Number of columns: ");
+	        int cols = scanner.nextInt();
+
+	        int[][] field = new int[rows][cols];
+
+	        try {
+	            for (int i = 0; i < rows; i++) {
+	                for (int j = 0; j < cols; j++) {
+	                    System.out.print("Enter element at position [" + i + "][" + j + "]: ");
+	                    field[i][j] = scanner.nextInt();
+	                }
+	            }
+	            int sum = 0;
+	            for (int[] row : field) {
+	                for (int element : row) {
+	                    sum += element;
+	                }
+	            }
+	            double average = (double) sum / (rows * cols);
+
+	            System.out.println("Array:");
+	            for (int[] row : field) {
+	                for (int element : row) {
+	                    System.out.print("[" + element + "] ");
+	                }
+	                System.out.println();
+	            }
+
+	            System.out.println("The sum = " + sum);
+	            System.out.println("The average = " + average);
+	        } catch (Exception e) {
+	            System.out.println("Error: Invalid input. Please enter integers only.");
+	        } finally {
+	            scanner.close();
+	        }
+	    }
+	}
