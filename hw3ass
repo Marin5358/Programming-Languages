@@ -1,0 +1,104 @@
+package ass1;
+
+public class Vehicle {
+     String model;
+     String producer;
+     int productionYear;
+     float co2Emissions;
+     String euroNCAP;
+     
+     public Vehicle() {
+    	 
+     }
+     
+     public void setModel(String model) {
+    	 this.model=model;
+     }
+     public String getModel() {
+    	 return model;
+     }
+     
+     public void setProducer(String producer) {
+    	 this.producer=producer;
+     }
+     public String getProducer() {
+    	 return producer;
+     }
+     
+     public void setProductionYear(int productionYear) {
+    	 this.productionYear=productionYear;
+     }
+     public int getProductionYear() {
+    	 return productionYear;
+     }
+     
+     public void setCo2Emissions(float co2Emissions) {
+    	 this.co2Emissions=co2Emissions;
+     }
+     public float geCo2Emissions() {
+    	 return co2Emissions;
+     }
+     
+     public void setEuroNCAP(String euroNCAP) {
+    	 this.euroNCAP=euroNCAP;
+     }
+     public String getEuroNCAP() {
+    	 return euroNCAP;
+     }
+     
+     public Vehicle(String model, String producer, int productionYear, float co2Emissions, String euroNCAP) {
+         this.model = model;
+         this.producer = producer;
+         this.productionYear = productionYear;
+         this.co2Emissions = co2Emissions;
+         this.euroNCAP = euroNCAP;
+     }
+}
+package ass1;
+import java.io.*;
+public class Demo {
+	
+	public static void main(String[]args) {
+		
+		Vehicle car = new Vehicle("BMW 3series", "BMW", 2012, 430, "5 stars");
+		
+		System.out.println("before ser.");
+		printVehicleDetails(car);
+		
+		serializeObject(car, "Cars.txt");
+		
+		Vehicle deserializedCar = (Vehicle) deserializeObject("Cars.txt");
+		
+		System.out.println("after ser.");
+		printVehicleDetails(deserializedCar);
+	}
+	
+	private static void printVehicleDetails(Vehicle vehicle) {
+		System.out.println("Model - " + vehicle.getModel());
+		System.out.println("Producer - " + vehicle.getProducer());
+		System.out.println("Year - " + vehicle.getProductionYear());
+		System.out.println("CO2 Emissions - " + vehicle.geCo2Emissions());
+		System.out.println("Euro NCAP - " + vehicle.getEuroNCAP());
+		System.out.println();
+	}
+	
+	private static void serializeObject(Vehicle car, String fileName) {
+		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName))){
+			oos.writeObject(car);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private static Object deserializeObject(String fileName) {
+		try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))){
+			return ois.readObject();
+		}catch(IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+}
+
+
